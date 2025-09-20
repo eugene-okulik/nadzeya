@@ -1,8 +1,8 @@
 a = 5
 b = 2
-result_1 = a + b
-result_2 = a - b
-result_3 = a * b
-print (result_1)
-print (result_2)
-print(result_3)
+result1 = a + b
+result2 = a - b
+result3 = a * b
+print (result1)
+print (result2)
+print(result3)
