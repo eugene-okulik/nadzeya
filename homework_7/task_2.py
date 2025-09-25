@@ -3,7 +3,3 @@ for key, value in my_dict.items():
     for _ in range(value):
         print(key, end='')
     print()
-
-
-
-
