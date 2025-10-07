@@ -5,7 +5,7 @@ def manage_operations(func):
             if first == second:
                 return func(first, second, "+")
             elif first > second:
-                return func(second, first,"-")
+                return func(second, first, "-")
             elif first < second:
                 return func(first, second, "/")
             elif first or second < 0:
