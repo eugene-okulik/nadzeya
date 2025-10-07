@@ -1,16 +1,15 @@
 def manage_operations(func):
 
-        def wrapper(first, second):
-
-            if first == second:
-                return func(first, second, "+")
-            elif first > second:
-                return func(second, first, "-")
-            elif first < second:
-                return func(first, second, "/")
-            elif first or second < 0:
-                return func(first, second, "*")
-        return wrapper
+    def wrapper(first, second):
+        if first == second:
+            return func(first, second, "+")
+        elif first > second:
+            return func(second, first, "-")
+        elif first < second:
+            return func(first, second, "/")
+        elif first or second < 0:
+            return func(first, second, "*")
+    return wrapper
 
 
 @manage_operations
