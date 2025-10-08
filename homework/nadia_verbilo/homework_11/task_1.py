@@ -1,13 +1,14 @@
 class Book:
     material = 'paper'
     text = True
-    ISBN = 123-456
+    ISBN = '123-456'
 
     def __init__(self, title, author, pages, reserved):
         self.title = title
         self.author = author
         self.pages = pages
         self.reserved = reserved
+
 
 book1 = Book('Idiot', 'Dostoevski', 500, True)
 book2 = Book('Idiot', 'Dostoevski', 500, False)
@@ -35,7 +36,7 @@ class SchoolBook(Book):
     tasks = True
 
     def __init__(self, title, author, pages, reserved, subject, class_number):
-        super().__init__ (title, author, pages, reserved)
+        super().__init__(title, author, pages, reserved)
         self.subject = subject
         self.class_number = class_number
 
