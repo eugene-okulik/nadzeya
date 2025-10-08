@@ -1,3 +1,6 @@
+import sys
+
+
 def fibonacci():
     fib1, fib2 = 0, 1
     while True:
@@ -17,4 +20,6 @@ def fibonacci_num(n):
 print(fibonacci_num(5))
 print(fibonacci_num(200))
 print(fibonacci_num(1000))
-# print(fibonacci_num(100000))
+
+sys.set_int_max_str_digits(0)
+print(fibonacci_num(100000))
