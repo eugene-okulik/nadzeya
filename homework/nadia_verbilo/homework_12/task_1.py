@@ -87,7 +87,7 @@ bouquet1.sort_flowers_by_price()
 print('Flowers sorted by price:')
 for flower in bouquet1.flowers:
     print(f'{flower.name}: {flower.price}')
-    
+
 bouquet1.sort_flowers_by_length()
 print('Flowers sorted by length:')
 for flower in bouquet1.flowers:
