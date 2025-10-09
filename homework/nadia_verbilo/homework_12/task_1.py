@@ -27,11 +27,12 @@ class Sunflower(Flower):
 
 class Rose(Flower):
 
-            def __init__(self, length, price):
-                super().__init__('Rose', 'red', length, 10, price)
+    def __init__(self, length, price):
+        super().__init__('Rose', 'red', length, 10, price)
 
 
 class Bouquet:
+
     def __init__(self):
         self.flowers = []
 
@@ -93,6 +94,6 @@ for flower in bouquet1.flowers:
     print(f'{flower.name}: {flower.length}')
 
 flowers_found = bouquet1.find_flowers_by_color(color='red')
-print(f'Flowers found by color:')
+print('Flowers found by color:')
 for flower in flowers_found:
     print(f'{flower.name}: {flower.color}')
