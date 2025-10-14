@@ -1,7 +1,11 @@
+import os
 from datetime import datetime, timedelta
 
 
-data_file_path = '/Users/nadzeya/PythonAutomation/nadzeya/homework/eugene_okulik/hw_13/data.txt'
+base_path = os.path.dirname(__file__)
+homework_path = os.path.dirname(os.path.dirname(base_path))
+data_file_path = os.path.join(homework_path, 'eugene_okulik', 'hw_13', 'data.txt')
+
 
 with open(data_file_path) as data_file:
     for line in data_file:
