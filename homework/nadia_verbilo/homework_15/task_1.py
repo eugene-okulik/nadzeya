@@ -29,11 +29,11 @@ update_query1 = "UPDATE students SET group_id = %s WHERE id = %s"
 cursor.execute(update_query1, (group_id, student_id))
 
 insert_query4 = "INSERT INTO subjects (title) VALUES (%s)"
-cursor.execute(insert_query4,('literature_a',))
+cursor.execute(insert_query4,('literature_a', ))
 subject_a_id = cursor.lastrowid
 print(subject_a_id)
 
-cursor.execute(insert_query4,('literature_b',))
+cursor.execute(insert_query4,('literature_b', ))
 subject_b_id = cursor.lastrowid
 print(subject_b_id)
 
@@ -61,17 +61,17 @@ cursor.execute(insert_query6, (8, lesson1_b_id, student_id))
 cursor.execute(insert_query6, (10, lesson2_b_id, student_id))
 
 select_query1 = "SELECT value FROM marks WHERE student_id = %s"
-cursor.execute(select_query1, (student_id,))
+cursor.execute(select_query1, (student_id, ))
 print(cursor.fetchall())
 
 select_query2 = "SELECT title FROM books WHERE taken_by_student_id = %s"
-cursor.execute(select_query2, (student_id,))
+cursor.execute(select_query2, (student_id, ))
 print(cursor.fetchall())
 
 select_query3 = '''
 SELECT
-	s.name AS student_name, s.second_name AS student_second_name, g.title AS group_title,
-	b.title AS book_title, sub.title AS subject_title, l.title AS lesson_title, m.value AS mark_value
+s.name AS student_name, s.second_name AS student_second_name, g.title AS group_title,
+b.title AS book_title, sub.title AS subject_title, l.title AS lesson_title, m.value AS mark_value
 FROM students s
 JOIN `groups` g ON s.group_id = g.id
 JOIN books b ON b.taken_by_student_id = s.id
@@ -80,7 +80,7 @@ JOIN lessons l ON m.lesson_id = l.id
 JOIN subjects sub ON l.subject_id = sub.id
 WHERE s.id = %s
 '''
-cursor.execute(select_query3, (student_id,))
+cursor.execute(select_query3, (student_id, ))
 print(cursor.fetchall())
 
 db.commit()
