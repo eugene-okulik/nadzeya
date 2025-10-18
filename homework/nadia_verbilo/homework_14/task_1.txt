@@ -1,0 +1,29 @@
+INSERT INTO students (name, second_name, group_id) VALUES ('Agatha', 'Christie', NULL)
+INSERT INTO books (title, taken_by_student_id) VALUES ('Five Little Pigs', 21575)
+INSERT INTO books (title, taken_by_student_id) VALUES ('Death on the Nile', 21575)
+INSERT INTO `groups` (title, start_date, end_date) VALUES ('liberal arts', 'Sep 2025', 'Jan 2026')
+UPDATE students SET group_id = 21475 WHERE id = 21575
+INSERT INTO subjects (title) VALUES ('literature_a')
+INSERT INTO subjects (title) VALUES ('literature_b')
+INSERT INTO lessons (title, subject_id) VALUES ('lesson1_literature_a', 12677)
+INSERT INTO lessons (title, subject_id) VALUES ('lesson2_literature_a', 12677)
+INSERT INTO lessons (title, subject_id) VALUES ('lesson1_literature_b', 12678)
+INSERT INTO lessons (title, subject_id) VALUES ('lesson2_literature_b', 12678)
+INSERT INTO marks (value, lesson_id, student_id) VALUES (7, 17312, 21575)
+INSERT INTO marks (value, lesson_id, student_id) VALUES (8, 17313, 21575)
+INSERT INTO marks (value, lesson_id, student_id) VALUES (9, 17314, 21575)
+INSERT INTO marks (value, lesson_id, student_id) VALUES (10, 17315, 21575)
+
+SELECT value FROM marks WHERE student_id = 21575
+SELECT title FROM books WHERE taken_by_student_id = 21575
+
+SELECT
+	s.name AS student_name, s.second_name AS student_second_name, g.title AS group_title,
+	b.title AS book_title, sub.title AS subject_title, l.title AS lesson_title, m.value AS mark_value
+FROM students s
+JOIN `groups` g ON s.group_id = g.id
+JOIN books b ON b.taken_by_student_id = s.id
+JOIN marks m ON m.student_id = s.id
+JOIN lessons l ON m.lesson_id = l.id
+JOIN subjects sub ON l.subject_id = sub.id
+WHERE s.id = 21575
