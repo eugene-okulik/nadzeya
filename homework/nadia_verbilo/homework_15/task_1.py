@@ -29,11 +29,11 @@ update_query1 = "UPDATE students SET group_id = %s WHERE id = %s"
 cursor.execute(update_query1, (group_id, student_id))
 
 insert_query4 = "INSERT INTO subjects (title) VALUES (%s)"
-cursor.execute(insert_query4,('literature_a', ))
+cursor.execute(insert_query4, ('literature_a', ))
 subject_a_id = cursor.lastrowid
 print(subject_a_id)
 
-cursor.execute(insert_query4,('literature_b', ))
+cursor.execute(insert_query4, ('literature_b', ))
 subject_b_id = cursor.lastrowid
 print(subject_b_id)
 
