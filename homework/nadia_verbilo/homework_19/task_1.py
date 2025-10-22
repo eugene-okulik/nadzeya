@@ -3,7 +3,7 @@ import requests
 
 def new_object():
     body = {
-        "data": {"color":"red","size":"small"},
+        "data": {"color": "red", "size": "small"},
         "id": 1234,
         "name": "test object one"
     }
@@ -16,7 +16,7 @@ def clear(object_id):
 
 
 def get_all_objects():
-    response = requests.get('http://objapi.course.qa-practice.com/object').json()
+    requests.get('http://objapi.course.qa-practice.com/object').json()
 
 
 def get_one_object():
@@ -41,12 +41,13 @@ def put_an_object():
         "data": {"color": "green", "size": "medium"},
         "id": 12345,
         "name": "update test object one"
-        }
+    }
     response = requests.put(f'http://objapi.course.qa-practice.com/object/{object_id}', json=body).json()
     assert response['data'] == {"color": "green", "size": "medium"}, 'Error in data update'
     assert response['id'] == 12345, 'Error in id update'
     assert response['name'] == 'update test object one', 'Error in name update'
     clear(object_id)
+
 
 def patch_an_object():
     object_id = new_object()
