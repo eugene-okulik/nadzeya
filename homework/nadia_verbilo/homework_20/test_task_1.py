@@ -30,21 +30,18 @@ def general():
 
 
 @pytest.mark.parametrize('body, expected_status_code', [
-    (
-            {"data": {"color": "red", "size": "small"},
-            "id": 1241,
-            "name": "test object1"}, 200
-    ),
-    (
-            {"data": {"color": "red", "size": "small"},
-            "id": 1241,
-            "name": "test object1"}, 200
-    ),
-    (
-            {"data": {"color": "red", "size": "small"},
-            "id": 1241,
-            "name": "test object1"}, 200
-    )
+    ({
+        "data": {"color": "red", "size": "small"},
+        "id": 1241,
+        "name": "test object1"}, 200),
+    ({
+        "data": {"color": "red", "size": "small"},
+        "id": 1241,
+        "name": "test object1"}, 200),
+    ({
+        "data": {"color": "red", "size": "small"},
+        "id": 1241,
+        "name": "test object1"}, 200)
 ])
 
 
