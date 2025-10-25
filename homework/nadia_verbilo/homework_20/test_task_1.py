@@ -2,6 +2,7 @@ import requests
 
 import pytest
 
+
 @pytest.fixture
 def new_object_id():
     body = {
@@ -77,8 +78,7 @@ def test_delete_an_object(individual, new_object_id):
     ({
         "data": {"color": "black", "size": "small"},
         "id": 1243,
-        "name": "test object3"}, 200)
-])
+        "name": "test object3"}, 200)])
 
 
 def test_post_an_object(individual, body, expected_status_code):
