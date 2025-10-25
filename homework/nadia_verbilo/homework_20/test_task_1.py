@@ -1,6 +1,6 @@
 import requests
-import pytest
 
+import pytest
 
 @pytest.fixture
 def new_object_id():
@@ -29,36 +29,15 @@ def general():
     print('Testing complete')
 
 
-@pytest.mark.parametrize('body, expected_status_code', [
-    ({
-        "data": {"color": "red", "size": "small"},
-        "id": 1241,
-        "name": "test object1"}, 200),
-    ({
-        "data": {"color": "red", "size": "small"},
-        "id": 1241,
-        "name": "test object1"}, 200),
-    ({
-        "data": {"color": "red", "size": "small"},
-        "id": 1241,
-        "name": "test object1"}, 200)
-])
-
-
+@pytest.mark.critical
 def test_get_one_object(individual, general, new_object_id):
     response = requests.get(f'http://objapi.course.qa-practice.com/object/{new_object_id}').json()
     assert response['id'] == new_object_id
 
 
-@pytest.mark.critical
 def test_get_all_objects(individual):
     response = requests.get('http://objapi.course.qa-practice.com/object')
     assert response.status_code == 200
-
-
-def test_post_an_object(individual, body, expected_status_code):
-    response = requests.post('http://objapi.course.qa-practice.com/object', json=body)
-    assert response.status_code == expected_status_code
 
 
 @pytest.mark.medium
@@ -84,3 +63,24 @@ def test_patch_an_object(individual, new_object_id):
 def test_delete_an_object(individual, new_object_id):
     response = requests.delete(f'http://objapi.course.qa-practice.com/object/{new_object_id}')
     assert response.status_code == 200
+
+
+@pytest.mark.parametrize('body, expected_status_code', [
+    ({
+        "data": {"color": "purple", "size": "small"},
+        "id": 1241,
+        "name": "test object1"}, 200),
+    ({
+        "data": {"color": "orange", "size": "small"},
+        "id": 1242,
+        "name": "test object2"}, 200),
+    ({
+        "data": {"color": "black", "size": "small"},
+        "id": 1243,
+        "name": "test object3"}, 200)
+])
+
+
+def test_post_an_object(individual, body, expected_status_code):
+    response = requests.post('http://objapi.course.qa-practice.com/object', json=body)
+    assert response.status_code == expected_status_code
