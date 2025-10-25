@@ -78,9 +78,8 @@ def test_delete_an_object(individual, new_object_id):
     ({
         "data": {"color": "black", "size": "small"},
         "id": 1243,
-        "name": "test object3"}, 200)])
-
-
+        "name": "test object3"}, 200)
+])
 def test_post_an_object(individual, body, expected_status_code):
     response = requests.post('http://objapi.course.qa-practice.com/object', json=body)
     assert response.status_code == expected_status_code
