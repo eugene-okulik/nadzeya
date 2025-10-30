@@ -40,8 +40,7 @@ def test_get_one_object(individual, general, new_object_id):
 @allure.feature('get')
 def test_get_all_objects(individual):
     response = requests.get('http://objapi.course.qa-practice.com/object')
-    assert response.status_code == 100 # expected error, correct status code == 200
-
+    assert response.status_code == 100   # expected error, correct status code == 200
 
 
 @allure.feature('update')
@@ -71,7 +70,7 @@ def test_delete_an_object(individual, new_object_id):
     with allure.step('Delete test object'):
         response = requests.delete(f'http://objapi.course.qa-practice.com/object/{new_object_id}')
     with allure.step('Check that status code is 200'):
-        assert response.status_code == 100 # expected error, correct status code == 200
+        assert response.status_code == 100   # expected error, correct status code == 200
 
 
 @allure.feature('create')
