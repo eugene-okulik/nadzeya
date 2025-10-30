@@ -1,6 +1,6 @@
 import requests
-
 import pytest
+import allure
 
 
 @pytest.fixture
@@ -30,17 +30,21 @@ def general():
     print('Testing complete')
 
 
+@allure.feature('get')
 @pytest.mark.critical
 def test_get_one_object(individual, general, new_object_id):
     response = requests.get(f'http://objapi.course.qa-practice.com/object/{new_object_id}').json()
     assert response['id'] == new_object_id
 
 
+@allure.feature('get')
 def test_get_all_objects(individual):
     response = requests.get('http://objapi.course.qa-practice.com/object')
-    assert response.status_code == 200
+    assert response.status_code == 100 # expected error, correct status code == 200
 
 
+
+@allure.feature('update')
 @pytest.mark.medium
 def test_put_an_object(individual, new_object_id):
     body = {
@@ -53,6 +57,7 @@ def test_put_an_object(individual, new_object_id):
     assert response['name'] == 'update test object one'
 
 
+@allure.feature('update')
 def test_patch_an_object(individual, new_object_id):
     body = {
         "name": "update2 test object one"
@@ -61,11 +66,15 @@ def test_patch_an_object(individual, new_object_id):
     assert response['name'] == 'update2 test object one'
 
 
+@allure.feature('delete')
 def test_delete_an_object(individual, new_object_id):
-    response = requests.delete(f'http://objapi.course.qa-practice.com/object/{new_object_id}')
-    assert response.status_code == 200
+    with allure.step('Delete test object'):
+        response = requests.delete(f'http://objapi.course.qa-practice.com/object/{new_object_id}')
+    with allure.step('Check that status code is 200'):
+        assert response.status_code == 100 # expected error, correct status code == 200
 
 
+@allure.feature('create')
 @pytest.mark.parametrize('body, expected_status_code', [
     ({
         "data": {"color": "purple", "size": "small"},
